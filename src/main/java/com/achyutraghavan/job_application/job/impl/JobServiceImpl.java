@@ -43,7 +43,6 @@ public class JobServiceImpl implements JobService {
     public boolean updateJob(Long id, Job updatedJob) {
         for (Job j: jobs) {
             if (j.getId().equals(id)) {
-                j.setId(updatedJob.getId());
                 j.setDescription(updatedJob.getDescription());
                 j.setLocation(updatedJob.getLocation());
                 j.setTitle(updatedJob.getTitle());
