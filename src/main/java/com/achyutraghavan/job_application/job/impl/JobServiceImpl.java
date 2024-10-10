@@ -14,6 +14,11 @@ public class JobServiceImpl implements JobService {
     private Long nextId = 1L;
 
     @Override
+    public boolean deleteJobById(Long id) {
+        return jobs.removeIf(job -> job.getId().equals(id));
+    }
+
+    @Override
     public List<Job> findAll() {
         return jobs;
     }
@@ -33,6 +38,4 @@ public class JobServiceImpl implements JobService {
         }
         return null;
     }
-
-
 }
