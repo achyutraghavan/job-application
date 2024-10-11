@@ -1,12 +1,27 @@
 package com.achyutraghavan.job_application.job;
 
+//import jakarta.persistence.Entity; // tells entity is mapped to class
+//import jakarta.persistence.GeneratedValue; // to allow jpa manage what type of values are generated
+//import jakarta.persistence.Id; // to rename table name, by default it's the name of the entity
+//import jakarta.persistence.Table; // to set primary key
+// import jakarta.persistence.GenerationType;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="job_table")
 public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    public Job() {  // default constructor required by jpa
+    }
 
     public Job(Long id, String title, String minSalary, String description, String maxSalary, String location) {
         this.id = id;
