@@ -6,6 +6,7 @@ package com.achyutraghavan.job_application.job;
 //import jakarta.persistence.Table; // to set primary key
 // import jakarta.persistence.GenerationType;
 
+import com.achyutraghavan.job_application.company.Company;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +20,17 @@ public class Job {
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    @ManyToOne
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Job() {  // default constructor required by jpa
     }

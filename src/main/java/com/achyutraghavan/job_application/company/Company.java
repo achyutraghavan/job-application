@@ -1,6 +1,7 @@
 package com.achyutraghavan.job_application.company;
 
 import com.achyutraghavan.job_application.job.Job;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,7 +15,10 @@ public class Company {
     private String description;
 
     // mapping between company and job. One company has many jobs.
-    @OneToMany
+    // mapped by "company" field in Job
+    // json ignore to handle infinite recursive call backs
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
     // private List<Review> reviews;
