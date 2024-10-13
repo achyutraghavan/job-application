@@ -41,4 +41,14 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return false;
     }
+
+    @Override
+    public boolean deleteCompany(Long id) {
+        try {
+            companyRepo.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

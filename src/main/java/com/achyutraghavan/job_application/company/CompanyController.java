@@ -29,7 +29,11 @@ public class CompanyController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCompany(@RequestBody Company company, @PathVariable Long id) {
-        companyService.updateCompanies(company, id);
-        return new ResponseEntity<>("Company details updated successfully", HttpStatus.OK);
+        return companyService.updateCompanies(company, id)? new ResponseEntity<>("Company details updated successfully", HttpStatus.OK): new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCompany(@PathVariable Long id) {
+        return companyService.deleteCompany(id) ? new ResponseEntity<>("Company deleted successfully", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
