@@ -13,14 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/companies/{companyId}")
 public class ReviewsController {
-
     private ReviewsService reviewsService;
 
     public ReviewsController(ReviewsService reviewsService) {
         this.reviewsService = reviewsService;
     }
 
-    @GetMapping
+    @GetMapping("/reviews")
     private ResponseEntity<List<Review>> getAllReviews(@PathVariable Long companyId) {
         return new ResponseEntity<>(reviewsService.getAllReviews(companyId), HttpStatus.OK);
     }
