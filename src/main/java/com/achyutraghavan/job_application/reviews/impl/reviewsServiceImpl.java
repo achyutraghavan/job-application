@@ -49,4 +49,33 @@ public class reviewsServiceImpl implements ReviewsService {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public boolean updateReview(Long companyId, Long reviewId, Review updatedReview) {
+        if (companyService.getCompanyById(companyId) != null) {
+            updatedReview.setCompany(companyService.getCompanyById(companyId));
+            updatedReview.setId(reviewId);
+            reviewsRepo.save(updatedReview);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteReview(Long companyId, Long reviewId) {
+        if (companyService.getCompanyById(companyId) != null) {
+            Review review = getReviewById(companyId, reviewId);
+            Company company = review.getCompany();
+            company.getReviews().remove(review);
+            review.setCompany(null);
+            companyService.updateCompanies(company, companyId);
+            try {
+                reviewsRepo.deleteById(reviewId);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
+    }
 }
