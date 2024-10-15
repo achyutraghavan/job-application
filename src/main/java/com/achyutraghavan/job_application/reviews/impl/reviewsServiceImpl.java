@@ -8,7 +8,6 @@ import com.achyutraghavan.job_application.reviews.ReviewsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentMap;
 
 @Service
 public class reviewsServiceImpl implements ReviewsService {
