@@ -3,7 +3,6 @@ package com.achyutraghavan.job_application.company.impl;
 import com.achyutraghavan.job_application.company.Company;
 import com.achyutraghavan.job_application.company.CompanyRepo;
 import com.achyutraghavan.job_application.company.CompanyService;
-import com.achyutraghavan.job_application.job.Job;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +34,6 @@ public class CompanyServiceImpl implements CompanyService {
             Company c = companyOptional.get();
             c.setDescription(company.getDescription());
             c.setName(company.getName());
-            c.setJobs(company.getJobs());
             companyRepo.save(c);
             return true;
         }

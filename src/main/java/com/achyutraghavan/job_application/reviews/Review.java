@@ -1,7 +1,5 @@
 package com.achyutraghavan.job_application.reviews;
 
-import com.achyutraghavan.job_application.company.Company;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,20 +10,9 @@ public class Review {
     private String description;
     private String title;
     private double rating;
-
-    @JsonIgnore
-    @ManyToOne
-    private Company company;
+    private Long companyId;
 
     public Review() {
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public Long getId() {
@@ -58,5 +45,13 @@ public class Review {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }
